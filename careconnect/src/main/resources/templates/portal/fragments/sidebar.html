@@ -3,46 +3,93 @@
     class="list-group"
 >
 
+    <!-- Dashboard -->
+
     <a
-        href="/"
-        class="list-group-item list-group-item-action active"
+        th:href="@{/}"
+        class="list-group-item
+               list-group-item-action"
+        th:classappend="${activePage == 'dashboard'}
+            ? ' active'"
     >
         Dashboard
     </a>
 
+
+    <!-- Doctors -->
+
     <a
-        href="#"
-        class="list-group-item list-group-item-action"
+        th:href="@{/doctors}"
+        class="list-group-item
+               list-group-item-action"
+        th:classappend="${activePage == 'doctors'}
+            ? ' active'"
     >
         Doctors
     </a>
 
+
+    <!-- Appointments -->
+
     <a
-        href="#"
-        class="list-group-item list-group-item-action"
+        th:href="@{/appointments}"
+        class="list-group-item
+               list-group-item-action"
+        th:classappend="${activePage == 'appointments'}
+            ? ' active'"
     >
         Appointments
     </a>
 
+
+    <!-- Users -->
+
     <a
-        href="#"
-        class="list-group-item list-group-item-action"
+        th:href="@{/users}"
+        class="list-group-item
+               list-group-item-action"
+        th:classappend="${activePage == 'users'}
+            ? ' active'"
     >
         Users
     </a>
 
+
+    <!-- Reports -->
+
     <a
-        href="#"
-        class="list-group-item list-group-item-action"
+        th:href="@{/reports}"
+        class="list-group-item
+               list-group-item-action"
+        th:classappend="${activePage == 'reports'}
+            ? ' active'"
     >
         Reports
     </a>
 
-    <a
-        href="#"
-        class="list-group-item list-group-item-action text-danger"
+
+    <!-- Logout -->
+
+    <form
+        th:action="@{/logout}"
+        method="post"
     >
-        Logout
-    </a>
+
+        <input
+            type="hidden"
+            th:name="${_csrf?.parameterName}"
+            th:value="${_csrf?.token}"
+        >
+
+        <button
+            type="submit"
+            class="list-group-item
+                   list-group-item-action
+                   text-danger"
+        >
+            Logout
+        </button>
+
+    </form>
 
 </div>

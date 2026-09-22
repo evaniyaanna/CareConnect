@@ -13,7 +13,7 @@
         content="width=device-width, initial-scale=1.0"
     >
 
-    <title>Hospital Management Portal</title>
+    <title>Dashboard</title>
 
     <link
         href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
@@ -24,46 +24,254 @@
 
 <body>
 
-    <!-- Header -->
-    <div th:replace="~{portal/fragments/header :: header}">
-    </div>
+<div
+    th:replace="~{portal/fragments/header :: header}"
+>
+</div>
 
 
-    <!-- Main Layout -->
-    <div class="container-fluid">
+<div class="container-fluid">
 
-        <div class="row">
+    <div class="row">
 
-            <!-- Sidebar -->
-            <div class="col-md-2 p-0">
+        <!-- Sidebar -->
 
-                <div
-                    th:replace="~{portal/fragments/sidebar :: sidebar}"
-                >
+        <div class="col-md-2 p-0">
+
+            <div
+                th:replace="~{portal/fragments/sidebar :: sidebar}"
+            >
+            </div>
+
+        </div>
+
+
+        <!-- Main Content -->
+
+        <div class="col-md-10 p-4">
+
+            <!-- Page Heading -->
+
+            <div class="mb-4">
+
+                <h2>Dashboard</h2>
+
+                <p class="text-muted">
+                    Overview of the hospital booking system.
+                </p>
+
+            </div>
+
+
+            <!-- Dashboard Statistics -->
+
+            <div class="row g-3 mb-4">
+
+
+                <!-- Doctors -->
+
+                <div class="col-md-3">
+
+                    <div class="card">
+
+                        <div class="card-body">
+
+                            <h6 class="text-muted">
+                                Doctors
+                            </h6>
+
+                            <h2
+                                th:text="${doctor_count}"
+                            >
+                                0
+                            </h2>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Patients -->
+
+                <div class="col-md-3">
+
+                    <div class="card">
+
+                        <div class="card-body">
+
+                            <h6 class="text-muted">
+                                Patients
+                            </h6>
+
+                            <h2
+                                th:text="${patient_count}"
+                            >
+                                0
+                            </h2>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Today's Appointments -->
+
+                <div class="col-md-3">
+
+                    <div class="card">
+
+                        <div class="card-body">
+
+                            <h6 class="text-muted">
+                                Today's Appointments
+                            </h6>
+
+                            <h2
+                                th:text="${todays_appointment_count}"
+                            >
+                                0
+                            </h2>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Total Bookings -->
+
+                <div class="col-md-3">
+
+                    <div class="card">
+
+                        <div class="card-body">
+
+                            <h6 class="text-muted">
+                                Total Bookings
+                            </h6>
+
+                            <h2
+                                th:text="${appointment_count}"
+                            >
+                                0
+                            </h2>
+
+                        </div>
+
+                    </div>
+
                 </div>
 
             </div>
 
 
-            <!-- Content -->
-            <div class="col-md-10 p-4">
+            <!-- Today's Appointments -->
 
-                <div class="p-4 bg-light rounded">
+            <div class="card">
 
-                    <h2>Welcome</h2>
+                <div class="card-header">
 
-                    <p>
-                        Welcome to the Hospital
-                        Management Portal.
-                    </p>
+                    Today's Appointments
 
-                    <hr>
+                </div>
 
-                    <p>
-                        We will gradually build every
-                        module of the portal in the
-                        coming chapters.
-                    </p>
+
+                <div class="card-body p-0">
+
+                    <table
+                        class="table
+                               table-bordered
+                               table-hover
+                               mb-0"
+                    >
+
+                        <thead>
+
+                            <tr>
+
+                                <th>Time</th>
+
+                                <th>Patient</th>
+
+                                <th>Doctor</th>
+
+                                <th>Status</th>
+
+                            </tr>
+
+                        </thead>
+
+
+                        <tbody>
+
+                            <!-- Appointment Rows -->
+
+                            <tr
+                                th:each="appointment :
+                                ${todaysAppointments}"
+                            >
+
+                                <!-- Time -->
+
+                                <td
+                                    th:text="${appointment.appointmentTime}"
+                                >
+                                </td>
+
+
+                                <!-- Patient -->
+
+                                <td
+                                    th:text="${appointment.patient.firstName
+                                        + ' '
+                                        + appointment.patient.lastName}"
+                                >
+                                </td>
+
+
+                                <!-- Doctor -->
+
+                                <td
+                                    th:text="${appointment.doctor.name}"
+                                >
+                                </td>
+
+
+                                <!-- Status -->
+
+                                <td
+                                    th:text="${appointment.status}"
+                                >
+                                </td>
+
+                            </tr>
+
+
+                            <!-- No Appointments -->
+
+                            <tr
+                                th:if="${#lists.isEmpty(
+                                    todaysAppointments
+                                )}"
+                            >
+
+                                <td
+                                    colspan="4"
+                                    class="text-center"
+                                >
+                                    No appointments available.
+                                </td>
+
+                            </tr>
+
+                        </tbody>
+
+                    </table>
 
                 </div>
 
@@ -72,6 +280,8 @@
         </div>
 
     </div>
+
+</div>
 
 </body>
 
