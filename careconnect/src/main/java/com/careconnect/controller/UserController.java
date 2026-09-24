@@ -16,42 +16,83 @@ public class UserController {
 
     private final AppointmentService appointmentService;
 
+
     public UserController(
             UserService userService,
             AppointmentService appointmentService) {
 
         this.userService = userService;
+
         this.appointmentService =
                 appointmentService;
     }
 
+
+    // =========================================================
+    // LIST / SEARCH USERS
+    // =========================================================
+
     @GetMapping
-    public String listUsers(Model model) {
+    public String listUsers(
+            @RequestParam(
+                    required = false
+            )
+            String search,
+            Model model) {
+
+
+        if (search == null || search.isBlank()) {
+
+            model.addAttribute(
+                    "users",
+                    userService.getAllPatients()
+            );
+
+        } else {
+
+            model.addAttribute(
+                    "users",
+                    userService.searchPatients(
+                            search
+                    )
+            );
+        }
+
 
         model.addAttribute(
-                "users",
-                userService.getAllPatients()
+                "search",
+                search
         );
+
 
         model.addAttribute(
                 "activePage",
                 "users"
         );
 
+
         return "portal/users/list";
     }
+
+
+    // =========================================================
+    // VIEW USER
+    // =========================================================
 
     @GetMapping("/{id}")
     public String viewUser(
             @PathVariable Long id,
             Model model) {
 
-        User user = userService.getUserById(id);
+        User user =
+                userService.getUserById(id);
+
 
         model.addAttribute(
                 "user",
                 user
         );
+
 
         model.addAttribute(
                 "appointments",
@@ -59,10 +100,12 @@ public class UserController {
                         .getAppointmentsByPatient(id)
         );
 
+
         model.addAttribute(
                 "activePage",
                 "users"
         );
+
 
         return "portal/users/view";
     }

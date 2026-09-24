@@ -8,6 +8,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class UserService {
@@ -29,7 +30,9 @@ public class UserService {
     }
 
 
-    // Get all patients
+    // =========================================================
+    // GET ALL PATIENTS
+    // =========================================================
 
     public List<User> getAllPatients() {
 
@@ -39,7 +42,75 @@ public class UserService {
     }
 
 
-    // Get user by ID
+    // =========================================================
+    // SEARCH PATIENTS
+    // =========================================================
+
+    public List<User> searchPatients(
+            String search) {
+
+        List<User> patients =
+                getAllPatients();
+
+
+        if (search == null || search.isBlank()) {
+
+            return patients;
+        }
+
+
+        String searchText =
+                search.trim().toLowerCase();
+
+
+        return patients.stream()
+                .filter(user -> {
+
+                    String firstName =
+                            user.getFirstName() == null
+                                    ? ""
+                                    : user.getFirstName()
+                                            .toLowerCase();
+
+                    String lastName =
+                            user.getLastName() == null
+                                    ? ""
+                                    : user.getLastName()
+                                            .toLowerCase();
+
+                    String email =
+                            user.getEmail() == null
+                                    ? ""
+                                    : user.getEmail()
+                                            .toLowerCase();
+
+                    String phone =
+                            user.getPhoneNumber() == null
+                                    ? ""
+                                    : String.valueOf(
+                                            user.getPhoneNumber()
+                                      );
+
+
+                    String fullName =
+                            firstName
+                                    + " "
+                                    + lastName;
+
+
+                    return firstName.contains(searchText)
+                            || lastName.contains(searchText)
+                            || fullName.contains(searchText)
+                            || email.contains(searchText)
+                            || phone.contains(searchText);
+                })
+                .collect(Collectors.toList());
+    }
+
+
+    // =========================================================
+    // GET USER BY ID
+    // =========================================================
 
     public User getUserById(Long id) {
 
@@ -49,7 +120,9 @@ public class UserService {
     }
 
 
-    // Get total number of patients
+    // =========================================================
+    // GET TOTAL NUMBER OF PATIENTS
+    // =========================================================
 
     public long getPatientCount() {
 
@@ -59,7 +132,9 @@ public class UserService {
     }
 
 
-    // Change password
+    // =========================================================
+    // CHANGE PASSWORD
+    // =========================================================
 
     public void changePassword(
             User user,

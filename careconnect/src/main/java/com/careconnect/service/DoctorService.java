@@ -2,6 +2,7 @@ package com.careconnect.service;
 
 import com.careconnect.dto.DoctorReport;
 import com.careconnect.entity.Doctor;
+import com.careconnect.repository.AppointmentRepository;
 import com.careconnect.repository.DoctorRepository;
 
 import org.springframework.stereotype.Service;
@@ -14,41 +15,110 @@ public class DoctorService {
 
     private final DoctorRepository doctorRepository;
 
+    private final AppointmentRepository appointmentRepository;
+
+
     public DoctorService(
-            DoctorRepository doctorRepository) {
+            DoctorRepository doctorRepository,
+            AppointmentRepository appointmentRepository) {
 
         this.doctorRepository =
                 doctorRepository;
+
+        this.appointmentRepository =
+                appointmentRepository;
     }
 
-    // Get all doctors
+
+    // =========================================================
+    // GET ALL DOCTORS
+    // =========================================================
+
     public List<Doctor> getAllDoctors() {
 
         return doctorRepository.findAll();
     }
 
-    // Get doctor by ID
+
+    // =========================================================
+    // GET DOCTOR BY ID
+    // =========================================================
+
     public Optional<Doctor> getDoctorById(
             Long id) {
 
         return doctorRepository.findById(id);
     }
 
-    // Save doctor
+
+    // =========================================================
+    // SAVE DOCTOR
+    // =========================================================
+
     public Doctor saveDoctor(
             Doctor doctor) {
 
         return doctorRepository.save(doctor);
     }
 
-    // Delete doctor
+
+    // =========================================================
+    // CHECK EMAIL FOR NEW DOCTOR
+    // =========================================================
+
+    public boolean doctorEmailExists(
+            String email) {
+
+        return doctorRepository.existsByEmail(
+                email
+        );
+    }
+
+
+    // =========================================================
+    // CHECK EMAIL FOR EDIT DOCTOR
+    // =========================================================
+
+    public boolean doctorEmailExistsForAnotherDoctor(
+            String email,
+            Long id) {
+
+        return doctorRepository
+                .existsByEmailAndIdNot(
+                        email,
+                        id
+                );
+    }
+
+
+    // =========================================================
+    // DELETE DOCTOR
+    // =========================================================
+
     public void deleteDoctor(
             Long id) {
+
+        boolean hasAppointments =
+                appointmentRepository
+                        .existsByDoctorId(id);
+
+
+        if (hasAppointments) {
+
+            throw new IllegalStateException(
+                    "Doctor has appointments and cannot be deleted."
+            );
+        }
+
 
         doctorRepository.deleteById(id);
     }
 
-    // Search doctors by name or specialization
+
+    // =========================================================
+    // SEARCH DOCTORS
+    // =========================================================
+
     public List<Doctor> searchDoctors(
             String search) {
 
@@ -59,27 +129,43 @@ public class DoctorService {
                 );
     }
 
-    // Get total number of doctors
+
+    // =========================================================
+    // GET TOTAL NUMBER OF DOCTORS
+    // =========================================================
+
     public long getDoctorCount() {
 
         return doctorRepository.count();
     }
 
-    // Get popular doctors for reports
+
+    // =========================================================
+    // GET POPULAR DOCTORS FOR REPORTS
+    // =========================================================
+
     public List<DoctorReport> getPopularDoctors() {
 
         return doctorRepository
                 .getPopularDoctors();
     }
 
-    // Get active doctors
+
+    // =========================================================
+    // GET ACTIVE DOCTORS
+    // =========================================================
+
     public List<Doctor> getActiveDoctors() {
 
         return doctorRepository
                 .findByIsActiveTrue();
     }
 
-    // Get active doctor by ID
+
+    // =========================================================
+    // GET ACTIVE DOCTOR BY ID
+    // =========================================================
+
     public Optional<Doctor> getActiveDoctorById(
             Long id) {
 

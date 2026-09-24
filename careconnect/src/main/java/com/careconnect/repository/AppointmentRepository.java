@@ -51,4 +51,12 @@ public interface AppointmentRepository
             LocalTime appointmentTime,
             AppointmentStatus status
     );
+
+    // =========================================================
+    // CHECK WHETHER DOCTOR HAS APPOINTMENTS
+    // =========================================================
+
+    boolean existsByDoctorId(
+            Long doctorId
+    );
 }

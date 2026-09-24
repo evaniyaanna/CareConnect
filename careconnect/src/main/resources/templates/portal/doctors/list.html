@@ -22,12 +22,14 @@
 
 </head>
 
+
 <body>
 
 <div
     th:replace="~{portal/fragments/header :: header}"
 >
 </div>
+
 
 <div class="container-fluid">
 
@@ -42,6 +44,7 @@
 
         </div>
 
+
         <div class="col-md-10 p-4">
 
             <!-- Page Heading -->
@@ -52,6 +55,7 @@
                         mb-4">
 
                 <h2>Doctor Management</h2>
+
 
                 <a
                     th:href="@{/doctors/add}"
@@ -69,6 +73,16 @@
                 th:if="${message}"
                 class="alert alert-success"
                 th:text="${message}"
+            >
+            </div>
+
+
+            <!-- Error Message -->
+
+            <div
+                th:if="${error}"
+                class="alert alert-danger"
+                th:text="${error}"
             >
             </div>
 
@@ -92,6 +106,7 @@
                     >
 
                 </div>
+
 
                 <div class="col-md-2">
 
@@ -128,6 +143,7 @@
 
                 </thead>
 
+
                 <tbody>
 
                     <tr
@@ -139,15 +155,18 @@
                         >
                         </td>
 
+
                         <td
                             th:text="${doctor.specialization}"
                         >
                         </td>
 
+
                         <td
                             th:text="${doctor.phoneNumber}"
                         >
                         </td>
+
 
                         <td>
 
@@ -219,6 +238,107 @@
     </div>
 
 </div>
+
+
+<!-- =========================================================
+     CANNOT DELETE DOCTOR MODAL
+     ========================================================= -->
+
+<div
+    class="modal fade"
+    id="cannotDeleteDoctorModal"
+    tabindex="-1"
+    aria-labelledby="cannotDeleteDoctorModalLabel"
+    aria-hidden="true"
+    th:if="${error}"
+>
+
+    <div class="modal-dialog modal-dialog-centered">
+
+        <div class="modal-content">
+
+            <div class="modal-header">
+
+                <h5
+                    class="modal-title"
+                    id="cannotDeleteDoctorModalLabel"
+                >
+                    Cannot Delete Doctor
+                </h5>
+
+                <button
+                    type="button"
+                    class="btn-close"
+                    data-bs-dismiss="modal"
+                    aria-label="Close"
+                >
+                </button>
+
+            </div>
+
+
+            <div class="modal-body">
+
+                <p
+                    class="mb-0"
+                    th:text="${error}"
+                >
+                </p>
+
+            </div>
+
+
+            <div class="modal-footer">
+
+                <button
+                    type="button"
+                    class="btn btn-primary"
+                    data-bs-dismiss="modal"
+                >
+                    OK
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- Bootstrap JavaScript -->
+
+<script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+>
+</script>
+
+
+<!-- Automatically show error modal -->
+
+<script th:if="${error}">
+
+    document.addEventListener(
+        "DOMContentLoaded",
+        function () {
+
+            const modalElement =
+                document.getElementById(
+                    "cannotDeleteDoctorModal"
+                );
+
+            const modal =
+                new bootstrap.Modal(
+                    modalElement
+                );
+
+            modal.show();
+        }
+    );
+
+</script>
+
 
 </body>
 

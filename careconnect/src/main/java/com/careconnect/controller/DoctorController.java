@@ -19,11 +19,14 @@ public class DoctorController {
 
     private final DoctorService doctorService;
 
+
     public DoctorController(
             DoctorService doctorService) {
 
-        this.doctorService = doctorService;
+        this.doctorService =
+                doctorService;
     }
+
 
     // =========================================================
     // LIST DOCTORS / SEARCH DOCTORS
@@ -37,32 +40,40 @@ public class DoctorController {
 
         List<Doctor> doctors;
 
+
         if (search == null || search.isBlank()) {
 
-            doctors = doctorService.getAllDoctors();
+            doctors =
+                    doctorService.getAllDoctors();
 
         } else {
 
-            doctors = doctorService.searchDoctors(search);
+            doctors =
+                    doctorService.searchDoctors(search);
         }
+
 
         model.addAttribute(
                 "doctors",
                 doctors
         );
 
+
         model.addAttribute(
                 "search",
                 search
         );
+
 
         model.addAttribute(
                 "activePage",
                 "doctors"
         );
 
+
         return "portal/doctors/list";
     }
+
 
     // =========================================================
     // SHOW ADD DOCTOR FORM
@@ -77,8 +88,10 @@ public class DoctorController {
                 new Doctor()
         );
 
+
         return "portal/doctors/form";
     }
+
 
     // =========================================================
     // SAVE NEW DOCTOR
@@ -89,22 +102,43 @@ public class DoctorController {
             @Valid @ModelAttribute("doctor")
             Doctor doctor,
             BindingResult result,
+            Model model,
             RedirectAttributes redirectAttributes) {
 
+        // Check normal validation errors first.
         if (result.hasErrors()) {
 
             return "portal/doctors/form";
         }
 
-        doctorService.saveDoctor(doctor);
+
+        // Check whether email already exists.
+        if (doctorService.doctorEmailExists(
+                doctor.getEmail())) {
+
+            model.addAttribute(
+                    "duplicateError",
+                    "A doctor with this email already exists. Please use a different email."
+            );
+
+            return "portal/doctors/form";
+        }
+
+
+        doctorService.saveDoctor(
+                doctor
+        );
+
 
         redirectAttributes.addFlashAttribute(
                 "message",
                 "Doctor added successfully."
         );
 
+
         return "redirect:/doctors";
     }
+
 
     // =========================================================
     // SHOW EDIT DOCTOR FORM
@@ -115,17 +149,21 @@ public class DoctorController {
             @PathVariable Long id,
             Model model) {
 
-        Doctor doctor = doctorService
-                .getDoctorById(id)
-                .orElseThrow();
+        Doctor doctor =
+                doctorService
+                        .getDoctorById(id)
+                        .orElseThrow();
+
 
         model.addAttribute(
                 "doctor",
                 doctor
         );
 
+
         return "portal/doctors/form";
     }
+
 
     // =========================================================
     // UPDATE DOCTOR
@@ -137,6 +175,7 @@ public class DoctorController {
             @Valid @ModelAttribute("doctor")
             Doctor doctor,
             BindingResult result,
+            Model model,
             RedirectAttributes redirectAttributes) {
 
         if (result.hasErrors()) {
@@ -144,53 +183,84 @@ public class DoctorController {
             return "portal/doctors/form";
         }
 
-        Doctor existingDoctor = doctorService
-                .getDoctorById(id)
-                .orElseThrow();
+
+        // Check whether another doctor already
+        // uses this email.
+        if (doctorService
+                .doctorEmailExistsForAnotherDoctor(
+                        doctor.getEmail(),
+                        id
+                )) {
+
+            model.addAttribute(
+                    "duplicateError",
+                    "Another doctor already uses this email. Please use a different email."
+            );
+
+            return "portal/doctors/form";
+        }
+
+
+        Doctor existingDoctor =
+                doctorService
+                        .getDoctorById(id)
+                        .orElseThrow();
+
 
         existingDoctor.setName(
                 doctor.getName()
         );
 
+
         existingDoctor.setSpecialization(
                 doctor.getSpecialization()
         );
+
 
         existingDoctor.setQualification(
                 doctor.getQualification()
         );
 
+
         existingDoctor.setExperience(
                 doctor.getExperience()
         );
+
 
         existingDoctor.setPhoneNumber(
                 doctor.getPhoneNumber()
         );
 
+
         existingDoctor.setEmail(
                 doctor.getEmail()
         );
+
 
         existingDoctor.setConsultationFee(
                 doctor.getConsultationFee()
         );
 
+
         existingDoctor.setIsActive(
                 doctor.getIsActive()
         );
 
+
         doctorService.saveDoctor(
                 existingDoctor
         );
+
 
         redirectAttributes.addFlashAttribute(
                 "message",
                 "Doctor updated successfully."
         );
 
+
         return "redirect:/doctors";
     }
+
 
     // =========================================================
     // DELETE DOCTOR
@@ -201,12 +271,26 @@ public class DoctorController {
             @PathVariable Long id,
             RedirectAttributes redirectAttributes) {
 
-        doctorService.deleteDoctor(id);
+        try {
 
-        redirectAttributes.addFlashAttribute(
-                "message",
-                "Doctor deleted successfully."
-        );
+            doctorService.deleteDoctor(
+                    id
+            );
+
+
+            redirectAttributes.addFlashAttribute(
+                    "message",
+                    "Doctor deleted successfully."
+            );
+
+        } catch (IllegalStateException error) {
+
+            redirectAttributes.addFlashAttribute(
+                    "error",
+                    error.getMessage()
+            );
+        }
+
 
         return "redirect:/doctors";
     }

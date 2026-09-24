@@ -29,6 +29,7 @@
 >
 </div>
 
+
 <div class="container-fluid">
 
     <div class="row">
@@ -42,11 +43,15 @@
 
         </div>
 
+
         <div class="col-md-10 p-4">
 
             <h2 class="mb-4">
                 User Management
             </h2>
+
+
+            <!-- Search Form -->
 
             <form
                 method="get"
@@ -57,13 +62,15 @@
                 <div class="col-md-5">
 
                     <input
-                        type="text"
-                        name="search"
-                        class="form-control"
-                        placeholder="Search users"
-                    >
+    type="text"
+    name="search"
+    class="form-control"
+    placeholder="Search users"
+    th:value="${search}"
+>
 
                 </div>
+
 
                 <div class="col-md-2">
 
@@ -93,13 +100,17 @@
                             <tr>
 
                                 <th>Name</th>
+
                                 <th>Email</th>
+
                                 <th>Contact</th>
+
                                 <th>Actions</th>
 
                             </tr>
 
                         </thead>
+
 
                         <tbody>
 
@@ -114,15 +125,18 @@
                                 >
                                 </td>
 
+
                                 <td
                                     th:text="${user.email}"
                                 >
                                 </td>
 
+
                                 <td
                                     th:text="${user.phoneNumber}"
                                 >
                                 </td>
+
 
                                 <td>
 
@@ -141,6 +155,9 @@
 
                             </tr>
 
+
+                            <!-- No Users -->
+
                             <tr
                                 th:if="${#lists.isEmpty(users)}"
                             >
@@ -149,7 +166,7 @@
                                     colspan="4"
                                     class="text-center"
                                 >
-                                    No patients available.
+                                    No patients found.
                                 </td>
 
                             </tr>

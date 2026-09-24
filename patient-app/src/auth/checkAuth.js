@@ -15,8 +15,11 @@ function CheckAuth({ children }) {
                 state.auth.isLoggedIn
         );
 
+    const token =
+        localStorage.getItem("token");
 
-    if (!isLoggedIn) {
+
+    if (!isLoggedIn && !token) {
 
         return (
 
