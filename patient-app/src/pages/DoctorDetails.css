@@ -1,0 +1,607 @@
+/* =====================================================
+   CARECONNECT - DOCTOR DETAILS
+===================================================== */
+
+.doctor-details-page {
+
+    width: 100%;
+
+    min-height: 750px;
+
+    padding:
+        70px 20px 100px;
+
+    background:
+        linear-gradient(
+            180deg,
+            #eef7ff 0%,
+            #ffffff 65%
+        );
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+}
+
+
+/* =====================================================
+   PAGE HEADING
+===================================================== */
+
+.doctor-details-heading {
+
+    width: 100%;
+
+    max-width: 800px;
+
+    margin:
+        0 auto 40px;
+
+    text-align: center;
+
+}
+
+
+.doctor-details-heading span {
+
+    display: block;
+
+    margin-bottom: 10px;
+
+    color: #087ff5;
+
+    font-size: 13px;
+
+    font-weight: 700;
+
+    letter-spacing: 3px;
+
+}
+
+
+.doctor-details-heading h1 {
+
+    margin:
+        0 0 12px;
+
+    color: #073b66;
+
+    font-size: 42px;
+
+    font-weight: 700;
+
+}
+
+
+.doctor-details-heading p {
+
+    margin: 0 auto;
+
+    max-width: 650px;
+
+    color: #66798b;
+
+    font-size: 17px;
+
+    line-height: 1.7;
+
+}
+
+
+/* =====================================================
+   DOCTOR PROFILE CARD
+===================================================== */
+
+.doctor-profile-card {
+
+    width: 100%;
+
+    max-width: 600px;
+
+    padding:
+        45px 50px 40px;
+
+    background: #ffffff;
+
+    border-radius: 24px;
+
+    text-align: center;
+
+    box-shadow:
+        0 15px 45px
+        rgba(0, 60, 100, 0.12);
+
+    border:
+        1px solid #e4eef5;
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+
+}
+
+
+.doctor-profile-card:hover {
+
+    transform:
+        translateY(-4px);
+
+    box-shadow:
+        0 20px 50px
+        rgba(0, 60, 100, 0.16);
+
+}
+
+
+/* =====================================================
+   DOCTOR IMAGE
+===================================================== */
+
+.doctor-profile-image {
+
+    width: 145px;
+
+    height: 145px;
+
+    margin:
+        0 auto 25px;
+
+    padding: 5px;
+
+    border-radius: 50%;
+
+    background:
+        linear-gradient(
+            135deg,
+            #087ff5,
+            #55b7ff
+        );
+
+    box-shadow:
+        0 8px 25px
+        rgba(0, 100, 200, 0.20);
+
+}
+
+
+.doctor-profile-image img {
+
+    width: 100%;
+
+    height: 100%;
+
+    display: block;
+
+    object-fit: cover;
+
+    object-position: center top;
+
+    border-radius: 50%;
+
+    background: #ffffff;
+
+}
+
+
+/* =====================================================
+   DOCTOR NAME
+===================================================== */
+
+.doctor-profile-card h2 {
+
+    margin:
+        0 0 8px;
+
+    color: #073b66;
+
+    font-size: 32px;
+
+    font-weight: 700;
+
+}
+
+
+.doctor-specialization {
+
+    display: inline-block;
+
+    padding:
+        7px 18px;
+
+    border-radius: 20px;
+
+    background: #eaf5ff;
+
+    color: #087ff5;
+
+    font-size: 14px;
+
+    font-weight: 600;
+
+    text-transform: capitalize;
+
+}
+
+
+/* =====================================================
+   DIVIDER
+===================================================== */
+
+.doctor-divider {
+
+    width: 100%;
+
+    height: 1px;
+
+    margin:
+        30px 0;
+
+    background:
+        #e1ebf2;
+
+}
+
+
+/* =====================================================
+   DOCTOR INFORMATION
+===================================================== */
+
+.doctor-information {
+
+    width: 100%;
+
+    margin-bottom: 30px;
+
+}
+
+
+.doctor-info-row {
+
+    min-height: 65px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 20px;
+
+    padding:
+        12px 5px;
+
+    border-bottom:
+        1px solid #edf2f6;
+
+}
+
+
+.doctor-info-row:last-child {
+
+    border-bottom: none;
+
+}
+
+
+.doctor-info-label {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    color: #64788a;
+
+    font-size: 15px;
+
+    text-align: left;
+
+}
+
+
+.info-icon {
+
+    width: 34px;
+
+    height: 34px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: #eef7ff;
+
+    color: #087ff5;
+
+    font-size: 15px;
+
+}
+
+
+.doctor-info-value {
+
+    color: #073b66;
+
+    font-size: 16px;
+
+    font-weight: 600;
+
+    text-align: right;
+
+}
+
+
+/* =====================================================
+   BOOK APPOINTMENT BUTTON
+===================================================== */
+
+.doctor-book-button {
+
+    width: 100%;
+
+    min-height: 52px;
+
+    padding:
+        14px 25px;
+
+    border: none;
+
+    border-radius: 10px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #087ff5,
+            #0068d7
+        );
+
+    color: white;
+
+    font-size: 16px;
+
+    font-weight: 700;
+
+    letter-spacing: 0.3px;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 8px 20px
+        rgba(0, 100, 220, 0.20);
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+
+.doctor-book-button span {
+
+    margin-left: 10px;
+
+    font-size: 20px;
+
+}
+
+
+.doctor-book-button:hover {
+
+    transform:
+        translateY(-3px);
+
+    box-shadow:
+        0 12px 28px
+        rgba(0, 100, 220, 0.30);
+
+}
+
+
+/* =====================================================
+   BACK BUTTON
+===================================================== */
+
+.doctor-back-button {
+
+    margin-top: 18px;
+
+    padding:
+        8px 20px;
+
+    border: none;
+
+    background: transparent;
+
+    color: #607789;
+
+    font-size: 14px;
+
+    cursor: pointer;
+
+    transition:
+        color 0.2s ease;
+}
+
+
+.doctor-back-button:hover {
+
+    color: #087ff5;
+
+}
+
+
+/* =====================================================
+   LOADING
+===================================================== */
+
+.doctor-loading {
+
+    min-height: 600px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 40px;
+
+    background:
+        linear-gradient(
+            180deg,
+            #eef7ff,
+            #ffffff
+        );
+
+}
+
+
+.doctor-loading-card {
+
+    width: 100%;
+
+    max-width: 350px;
+
+    padding: 40px;
+
+    border-radius: 20px;
+
+    background: white;
+
+    text-align: center;
+
+    box-shadow:
+        0 10px 35px
+        rgba(0, 60, 100, 0.10);
+
+}
+
+
+.doctor-loading-card p {
+
+    margin:
+        20px 0 0;
+
+    color: #627587;
+
+}
+
+
+/* Loading spinner */
+
+.loading-spinner {
+
+    width: 45px;
+
+    height: 45px;
+
+    margin: auto;
+
+    border:
+        4px solid #dceefa;
+
+    border-top-color:
+        #087ff5;
+
+    border-radius: 50%;
+
+    animation:
+        doctorSpin 0.8s linear infinite;
+
+}
+
+
+@keyframes doctorSpin {
+
+    to {
+
+        transform:
+            rotate(360deg);
+
+    }
+
+}
+
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media (max-width: 600px) {
+
+    .doctor-details-page {
+
+        padding:
+            50px 15px 70px;
+
+    }
+
+
+    .doctor-details-heading h1 {
+
+        font-size: 34px;
+
+    }
+
+
+    .doctor-details-heading p {
+
+        font-size: 15px;
+
+    }
+
+
+    .doctor-profile-card {
+
+        padding:
+            35px 22px 30px;
+
+        border-radius: 20px;
+
+    }
+
+
+    .doctor-profile-image {
+
+        width: 125px;
+
+        height: 125px;
+
+    }
+
+
+    .doctor-profile-card h2 {
+
+        font-size: 27px;
+
+    }
+
+
+    .doctor-info-row {
+
+        align-items: flex-start;
+
+    }
+
+
+    .doctor-info-label {
+
+        font-size: 14px;
+
+    }
+
+
+    .doctor-info-value {
+
+        font-size: 14px;
+
+    }
+
+}
