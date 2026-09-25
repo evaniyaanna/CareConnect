@@ -1,5 +1,6 @@
 import {
-    Outlet
+    Outlet,
+    useLocation
 } from "react-router-dom";
 
 import Header
@@ -17,31 +18,53 @@ import AutoLogin
 
 function App() {
 
+    const location =
+        useLocation();
+
+
+    const isLandingPage =
+        location.pathname === "/";
+
+
     return (
 
         <>
 
+            {/* DO NOT CHANGE AUTO LOGIN */}
+
             <AutoLogin />
 
-            <div className="d-flex flex-column min-vh-100">
 
-                <Header />
+            {isLandingPage ? (
 
-                <Navigation />
+                <Outlet />
 
-                <main className="container py-4 flex-grow-1">
+            ) : (
 
-                    <Outlet />
+                <div className="d-flex flex-column min-vh-100">
 
-                </main>
+                    <Header />
 
-                <Footer />
+                    <Navigation />
 
-            </div>
+
+                    <main className="flex-grow-1">
+
+                        <Outlet />
+
+                    </main>
+
+
+                    <Footer />
+
+                </div>
+
+            )}
 
         </>
 
     );
+
 }
 
 

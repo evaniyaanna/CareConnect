@@ -1,0 +1,963 @@
+/* =====================================================
+   CARECONNECT HOME PAGE
+===================================================== */
+
+.home-page {
+
+    width: 100%;
+
+    margin: 0;
+
+    padding: 0;
+
+    color: #123;
+
+}
+
+
+/* =====================================================
+   LARGE CARECONNECT HEADER
+===================================================== */
+
+.careconnect-header {
+
+    width: 100%;
+
+    min-height: 230px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #0077e6,
+            #004d91
+        );
+
+    color: white;
+
+    position: relative;
+
+    overflow: hidden;
+
+}
+
+
+.careconnect-header-content {
+
+    width: 90%;
+
+    max-width: 1200px;
+
+    min-height: 230px;
+
+    margin: auto;
+
+    position: relative;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+}
+
+
+/* Doctor image */
+
+.header-doctor {
+
+    position: absolute;
+
+    left: 0;
+
+    bottom: 0;
+
+    width: 230px;
+
+    height: 230px;
+
+    display: flex;
+
+    align-items: flex-end;
+
+    justify-content: center;
+
+}
+
+
+.header-doctor img {
+
+    width: 220px;
+
+    height: 220px;
+
+    object-fit: cover;
+
+    object-position: center top;
+
+    border-radius: 50%;
+
+    border: 5px solid white;
+
+    box-shadow:
+        0 8px 25px rgba(0, 0, 0, 0.25);
+
+}
+
+
+/* CareConnect */
+
+.header-brand {
+
+    text-align: center;
+
+    padding:
+        30px 20px;
+
+}
+
+
+.header-brand h1 {
+
+    margin: 0;
+
+    color: white;
+
+    font-size: 48px;
+
+    font-weight: 700;
+
+    letter-spacing: 2px;
+
+}
+
+
+.header-brand p {
+
+    margin:
+        10px 0 0;
+
+    color:
+        rgba(255, 255, 255, 0.9);
+
+    font-size: 17px;
+
+    letter-spacing: 1px;
+
+}
+
+
+/* =====================================================
+   HOSPITAL BOOKING SECTION
+===================================================== */
+
+.booking-section {
+
+    width: 100%;
+
+    min-height: 420px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    text-align: center;
+
+    padding: 70px 30px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #eef7ff,
+            #ffffff
+        );
+
+}
+
+
+.booking-content {
+
+    width: 100%;
+
+    max-width: 850px;
+
+}
+
+
+.booking-small-title {
+
+    display: block;
+
+    margin-bottom: 15px;
+
+    color: #087ff5;
+
+    font-size: 13px;
+
+    font-weight: bold;
+
+    letter-spacing: 3px;
+
+}
+
+
+.booking-section h1 {
+
+    margin: 0 0 20px;
+
+    color: #073b66;
+
+    font-size: 58px;
+
+    font-weight: 700;
+
+    line-height: 1.15;
+
+}
+
+
+.booking-lead {
+
+    margin: 0 auto;
+
+    color: #506579;
+
+    font-size: 22px;
+
+    line-height: 1.6;
+
+}
+
+
+.booking-line {
+
+    width: 100%;
+
+    max-width: 700px;
+
+    height: 1px;
+
+    margin: 30px auto;
+
+    background: #ccd9e3;
+
+}
+
+
+.booking-text {
+
+    margin: 0;
+
+    color: #42586c;
+
+    font-size: 17px;
+
+}
+
+
+/* =====================================================
+   DOCTORS SECTION
+===================================================== */
+
+.home-doctors-section {
+
+    width: 100%;
+
+    padding: 100px 0;
+
+    background: #ffffff;
+
+}
+
+
+.doctors-heading {
+
+    width: 90%;
+
+    max-width: 1100px;
+
+    margin: 0 auto 50px;
+
+    text-align: center;
+
+}
+
+
+.home-section-label {
+
+    display: block;
+
+    margin-bottom: 12px;
+
+    color: #087ff5;
+
+    font-size: 13px;
+
+    font-weight: bold;
+
+    letter-spacing: 3px;
+
+    text-transform: uppercase;
+
+}
+
+
+.doctors-heading h2 {
+
+    margin: 0 0 18px;
+
+    color: #073b66;
+
+    font-size: 45px;
+
+    font-weight: 700;
+
+}
+
+
+.doctors-heading p {
+
+    max-width: 700px;
+
+    margin: auto;
+
+    color: #6a7c8d;
+
+    font-size: 18px;
+
+    line-height: 1.7;
+
+}
+
+
+/* =====================================================
+   HORIZONTAL DOCTOR SCROLL
+===================================================== */
+
+.doctor-scroll-wrapper {
+
+    width: 100%;
+
+    overflow: hidden;
+
+}
+
+
+.doctor-scroll {
+
+    display: flex;
+
+    gap: 25px;
+
+    width: 100%;
+
+    overflow-x: auto;
+
+    overflow-y: hidden;
+
+    padding:
+        15px 5% 35px;
+
+    scroll-behavior: smooth;
+
+    scrollbar-width: thin;
+
+    scrollbar-color:
+        #087ff5
+        #e8f0f6;
+
+}
+
+
+.doctor-scroll::-webkit-scrollbar {
+
+    height: 9px;
+
+}
+
+
+.doctor-scroll::-webkit-scrollbar-track {
+
+    background: #e8f0f6;
+
+    border-radius: 10px;
+
+}
+
+
+.doctor-scroll::-webkit-scrollbar-thumb {
+
+    background: #087ff5;
+
+    border-radius: 10px;
+
+}
+
+
+.doctor-scroll::-webkit-scrollbar-thumb:hover {
+
+    background: #005fc7;
+
+}
+
+
+/* Individual doctor */
+
+.home-doctor-item {
+
+    flex:
+        0 0 320px;
+
+    width: 320px;
+
+}
+
+
+/* =====================================================
+   DOCTOR CARD
+===================================================== */
+
+.home-doctor-item .card {
+
+    height: 100%;
+
+    min-height: 290px;
+
+    border: none;
+
+    border-radius: 18px;
+
+    background: #ffffff;
+
+    box-shadow:
+        0 8px 30px
+        rgba(0, 60, 100, 0.10);
+
+    overflow: hidden;
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+
+}
+
+
+.home-doctor-item .card:hover {
+
+    transform:
+        translateY(-8px);
+
+    box-shadow:
+        0 18px 40px
+        rgba(0, 60, 100, 0.17);
+
+}
+
+
+.home-doctor-item .card-body {
+
+    padding: 30px;
+
+}
+
+
+.home-doctor-item .card-title {
+
+    color: #073b66;
+
+    font-size: 24px;
+
+    font-weight: 700;
+
+    margin-bottom: 15px;
+
+}
+
+
+.home-doctor-item .card-text {
+
+    color: #627587;
+
+    font-size: 15px;
+
+    line-height: 1.6;
+
+}
+
+
+.home-doctor-item .btn-primary {
+
+    margin-top: 10px;
+
+    border: none;
+
+    background: #087ff5;
+
+    padding:
+        10px 22px;
+
+    border-radius: 7px;
+
+}
+
+
+.home-doctor-item .btn-primary:hover {
+
+    background: #005fc7;
+
+}
+
+
+/* =====================================================
+   NO DOCTORS
+===================================================== */
+
+.home-doctors-empty {
+
+    width: 90%;
+
+    max-width: 700px;
+
+    margin: auto;
+
+    padding: 30px;
+
+    text-align: center;
+
+    border-radius: 12px;
+
+    background: #eef6fc;
+
+    color: #607386;
+
+}
+
+
+/* =====================================================
+   HOSPITAL IMAGE / HEALTHCARE MESSAGE
+===================================================== */
+
+.healthcare-message {
+
+    min-height: 480px;
+
+    padding: 90px 25px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    text-align: center;
+
+    color: white;
+
+    background-size: cover;
+
+    background-position: center;
+
+    background-repeat: no-repeat;
+
+}
+
+
+.healthcare-message-content {
+
+    max-width: 750px;
+
+}
+
+
+.healthcare-message-content > span {
+
+    color: #a9dcff;
+
+    font-size: 13px;
+
+    font-weight: bold;
+
+    letter-spacing: 3px;
+
+}
+
+
+.healthcare-message h2 {
+
+    margin:
+        15px 0 25px;
+
+    color: white;
+
+    font-size: 50px;
+
+    line-height: 1.2;
+
+}
+
+
+.healthcare-message p {
+
+    margin: auto;
+
+    max-width: 600px;
+
+    color:
+        rgba(255, 255, 255, 0.92);
+
+    font-size: 19px;
+
+    line-height: 1.7;
+
+}
+
+
+/* =====================================================
+   INFORMATION CARDS
+===================================================== */
+
+.home-info-section {
+
+    padding: 90px 25px;
+
+    background: #f5faff;
+
+}
+
+
+.home-info-container {
+
+    width: 90%;
+
+    max-width: 1050px;
+
+    margin: auto;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: stretch;
+
+    gap: 30px;
+
+}
+
+
+.home-info-card {
+
+    flex: 1;
+
+    min-height: 220px;
+
+    padding: 35px 25px;
+
+    text-align: center;
+
+    background: white;
+
+    border-radius: 18px;
+
+    box-shadow:
+        0 7px 25px
+        rgba(0, 60, 100, 0.08);
+
+}
+
+
+.home-info-icon {
+
+    width: 55px;
+
+    height: 55px;
+
+    margin:
+        0 auto 18px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: #e7f4ff;
+
+    color: #087ff5;
+
+    font-size: 25px;
+
+    font-weight: bold;
+
+}
+
+
+.home-info-card h3 {
+
+    margin:
+        0 0 12px;
+
+    color: #073b66;
+
+    font-size: 20px;
+
+}
+
+
+.home-info-card p {
+
+    margin: 0;
+
+    color: #687b8d;
+
+    line-height: 1.6;
+
+}
+
+
+/* =====================================================
+   MOBILE HEADER
+===================================================== */
+
+@media (max-width: 700px) {
+
+    .careconnect-header {
+
+        min-height: 260px;
+
+    }
+
+
+    .careconnect-header-content {
+
+        min-height: 260px;
+
+    }
+
+
+    .header-doctor {
+
+        width: 120px;
+
+        height: 120px;
+
+        left: 50%;
+
+        bottom: 15px;
+
+        transform:
+            translateX(-50%);
+
+    }
+
+
+    .header-doctor img {
+
+        width: 110px;
+
+        height: 110px;
+
+    }
+
+
+    .header-brand {
+
+        align-self: flex-start;
+
+        padding-top: 25px;
+
+    }
+
+
+    .header-brand h1 {
+
+        font-size: 32px;
+
+    }
+
+
+    .header-brand p {
+
+        font-size: 13px;
+
+    }
+
+}
+
+
+/* =====================================================
+   TABLET
+===================================================== */
+
+@media (max-width: 900px) {
+
+    .booking-section h1 {
+
+        font-size: 48px;
+
+    }
+
+
+    .doctors-heading h2 {
+
+        font-size: 38px;
+
+    }
+
+
+    .healthcare-message h2 {
+
+        font-size: 42px;
+
+    }
+
+
+    .home-info-container {
+
+        flex-wrap: wrap;
+
+    }
+
+
+    .home-info-card {
+
+        flex:
+            0 0 calc(50% - 15px);
+
+    }
+
+}
+
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media (max-width: 600px) {
+
+    .booking-section {
+
+        min-height: 350px;
+
+        padding:
+            60px 20px;
+
+    }
+
+
+    .booking-section h1 {
+
+        font-size: 38px;
+
+    }
+
+
+    .booking-lead {
+
+        font-size: 18px;
+
+    }
+
+
+    .booking-text {
+
+        font-size: 15px;
+
+    }
+
+
+    .home-doctors-section {
+
+        padding:
+            70px 0;
+
+    }
+
+
+    .doctors-heading {
+
+        width: 90%;
+
+        margin-bottom: 35px;
+
+    }
+
+
+    .doctors-heading h2 {
+
+        font-size: 34px;
+
+    }
+
+
+    .doctors-heading p {
+
+        font-size: 16px;
+
+    }
+
+
+    .home-doctor-item {
+
+        flex:
+            0 0 280px;
+
+        width: 280px;
+
+    }
+
+
+    .home-doctor-item .card-body {
+
+        padding: 25px;
+
+    }
+
+
+    .healthcare-message {
+
+        min-height: 400px;
+
+        padding:
+            70px 20px;
+
+    }
+
+
+    .healthcare-message h2 {
+
+        font-size: 35px;
+
+    }
+
+
+    .healthcare-message p {
+
+        font-size: 16px;
+
+    }
+
+
+    .home-info-container {
+
+        width: 100%;
+
+        flex-direction: column;
+
+        align-items: center;
+
+    }
+
+
+    .home-info-card {
+
+        width: 100%;
+
+        max-width: 350px;
+
+    }
+
+}

@@ -3,20 +3,26 @@ import {
     useNavigate
 } from "react-router-dom";
 
+
 import {
     useSelector,
     useDispatch
 } from "react-redux";
 
-import api from "../api/axios";
+
+import api
+    from "../api/axios";
 
 
 function Navigation() {
 
     const isLoggedIn =
+
         useSelector(
+
             state =>
                 state.auth.isLoggedIn
+
         );
 
 
@@ -67,8 +73,11 @@ function Navigation() {
 
             <div className="container">
 
+
+                {/* CareConnect logo */}
+
                 <Link
-                    to="/"
+                    to="/home"
                     className="navbar-brand"
                 >
                     CareConnect
@@ -77,13 +86,18 @@ function Navigation() {
 
                 <div className="navbar-nav">
 
+
+                    {/* Home */}
+
                     <Link
-                        to="/"
+                        to="/home"
                         className="nav-link"
                     >
                         Home
                     </Link>
 
+
+                    {/* Doctors */}
 
                     <Link
                         to="/doctors"
@@ -92,6 +106,8 @@ function Navigation() {
                         Doctors
                     </Link>
 
+
+                    {/* Login/Register */}
 
                     {!isLoggedIn && (
 
@@ -116,6 +132,8 @@ function Navigation() {
 
                     )}
 
+
+                    {/* Logged-in navigation */}
 
                     {isLoggedIn && (
 
@@ -147,9 +165,7 @@ function Navigation() {
 
                             <button
                                 className="btn btn-link nav-link"
-                                onClick={
-                                    handleLogout
-                                }
+                                onClick={handleLogout}
                             >
                                 Logout
                             </button>

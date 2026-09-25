@@ -2,18 +2,41 @@ function Header() {
 
     return (
 
-        <header className="bg-primary text-white">
+        <header className="careconnect-header">
 
-            <div className="container py-3">
+            <div className="careconnect-header-content">
 
-                <h3 className="mb-0">
-                    CareConnect
-                </h3>
+
+                <div className="header-doctor">
+
+                    <img
+                        src="/images/doctor.jpg"
+                        alt="Doctor"
+                    />
+
+                </div>
+
+
+                <div className="header-brand">
+
+                    <h1>
+                        CareConnect
+                    </h1>
+
+                    <p>
+                        Connecting You to Better Healthcare
+                    </p>
+
+                </div>
+
 
             </div>
 
         </header>
+
     );
+
 }
+
 
 export default Header;
